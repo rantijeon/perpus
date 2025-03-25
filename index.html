@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Kunjungan Perpustakaan</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h2>Form Kunjungan Perpustakaan</h2>
+    
+    <form id="visitForm">
+        <label for="id_perpustakaan">ID Perpustakaan:</label>
+        <input type="text" id="id_perpustakaan" name="id_perpustakaan" required>
+        
+        <label for="nama">Nama:</label>
+        <input type="text" id="nama" name="nama" required>
+        
+        <label for="nim">NIM:</label>
+        <input type="text" id="nim" name="nim" required>
+        
+        <label for="tanggal">Tanggal:</label>
+        <input type="date" id="tanggal" name="tanggal" required>
+        
+        <label for="prodi">Program Studi:</label>
+        <input type="text" id="prodi" name="prodi" required>
+        
+        <label for="keperluan">Keperluan:</label>
+        <textarea id="keperluan" name="keperluan" required></textarea>
+        
+        <button type="submit">Kirim</button>
+    </form>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>ID Perpustakaan</th>
+                <th>Nama</th>
+                <th>NIM</th>
+                <th>Tanggal</th>
+                <th>Prodi</th>
+                <th>Keperluan</th>
+            </tr>
+        </thead>
+        <tbody id="visitList">
+            <!-- Data akan dimasukkan di sini -->
+        </tbody>
+    </table>
+    
+    <script>
+        document.getElementById('visitForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            let id_perpustakaan = document.getElementById('id_perpustakaan').value;
+            let nama = document.getElementById('nama').value;
+            let nim = document.getElementById('nim').value;
+            let tanggal = document.getElementById('tanggal').value;
+            let prodi = document.getElementById('prodi').value;
+            let keperluan = document.getElementById('keperluan').value;
+            
+            let table = document.getElementById('visitList');
+            let newRow = table.insertRow();
+            newRow.innerHTML = `<td>${id_perpustakaan}</td><td>${nama}</td><td>${nim}</td><td>${tanggal}</td><td>${prodi}</td><td>${keperluan}</td>`;
+            
+            document.getElementById('visitForm').reset();
+        });
+    </script>
+</body>
+</html>
